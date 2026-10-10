@@ -1,0 +1,13 @@
+# Catalog gazetteer for product entity extraction (longest matches first)
+Galaxy M14
+iPhone 14
+smart watch
+wireless earbuds
+headphones
+running shoes
+mixer grinder
+laptop
+backpack
+electric kettle
+gaming mouse
+bluetooth speaker

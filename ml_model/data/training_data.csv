@@ -1,0 +1,121 @@
+text,intent,language
+"Where is my order?",order_tracking,en
+"Can you tell me the status of my order #48213",order_tracking,en
+"track my package please",order_tracking,en
+"Where has my parcel reached?",order_tracking,en
+"Please check tracking details for ORD-99124",order_tracking,en
+"When will my package arrive?",order_tracking,en
+"nanna order yelli ide",order_tracking,kn-latn
+"nanna order status heli",order_tracking,kn-latn
+"order status check madi",order_tracking,kn-latn
+"ನನ್ನ ಆರ್ಡರ್ ಎಲ್ಲಿದೆ",order_tracking,kn
+"ಆರ್ಡರ್ ಸ್ಟೇಟಸ್ ತಿಳಿಸಿ",order_tracking,kn
+"ಪಾರ್ಸೆಲ್ ಎಲ್ಲಿದೆ",order_tracking,kn
+"Please cancel my order",order_cancellation,en
+"I ordered by mistake, cancel it",order_cancellation,en
+"I want to cancel ORD-55120 before it ships",order_cancellation,en
+"Cancel my recent order please",order_cancellation,en
+"I don't need this item anymore, cancel it",order_cancellation,en
+"Please stop and cancel my shipment",order_cancellation,en
+"order cancel madi",order_cancellation,kn-latn
+"nanna order cancel madbeku",order_cancellation,kn-latn
+"nanage ee order beda cancel madi",order_cancellation,kn-latn
+"ನನ್ನ ಆರ್ಡರ್ ಕ್ಯಾನ್ಸಲ್ ಮಾಡಿ",order_cancellation,kn
+"ಈ ಆರ್ಡರ್ ರದ್ದು ಮಾಡಿ",order_cancellation,kn
+"ಆರ್ಡರ್ ಕ್ಯಾನ್ಸಲ್ ಮಾಡಬೇಕು",order_cancellation,kn
+"I want my money back",refund_request,en
+"Please refund the amount for my order",refund_request,en
+"When will my refund be credited?",refund_request,en
+"My refund has not processed yet",refund_request,en
+"Kindly initiate a refund for Rs 1200",refund_request,en
+"I need a full refund for the cancelled item",refund_request,en
+"nange hana vapas beku",refund_request,kn-latn
+"hana refund madi",refund_request,kn-latn
+"duddu vapas kodi",refund_request,kn-latn
+"ನನಗೆ ಹಣ ವಾಪಸ್ ಬೇಕು",refund_request,kn
+"ಹಣ ರಿಫಂಡ್ ಮಾಡಿ",refund_request,kn
+"ನನ್ನ ಹಣ ವಾಪಸ್ ಕೊಡಿ",refund_request,kn
+"Does this phone support fast charging?",product_information,en
+"What colours does the smart watch come in?",product_information,en
+"Is the laptop available with 16 GB RAM?",product_information,en
+"What is the warranty period for this mixer grinder?",product_information,en
+"Can you tell me the price and specifications of this product?",product_information,en
+"Are the wireless earbuds water resistant?",product_information,en
+"ee product bele eshtu",product_information,kn-latn
+"ee item specifications heli",product_information,kn-latn
+"smart watch battery life eshtu",product_information,kn-latn
+"ಈ ಫೋನ್ ಬೆಲೆ ಎಷ್ಟು",product_information,kn
+"ಉತ್ಪನ್ನದ ವಿವರ ತಿಳಿಸಿ",product_information,kn
+"ಇದರ ಬೆಲೆ ಮತ್ತು ವಾರಂಟಿ ಎಷ್ಟು",product_information,kn
+"Your service is terrible",complaint,en
+"I am very disappointed with how I was treated",complaint,en
+"Worst experience, nobody replies to my emails",complaint,en
+"This is unacceptable customer support",complaint,en
+"I am frustrated with the continuous delays and rude staff",complaint,en
+"Horrible quality and pathetic response from executive",complaint,en
+"tumba worst service",complaint,kn-latn
+"chennagi illa nimma service",complaint,kn-latn
+"tumba bejar aagide nimma response nodi",complaint,kn-latn
+"ನಿಮ್ಮ ಸೇವೆ ಚೆನ್ನಾಗಿಲ್ಲ",complaint,kn
+"ತುಂಬಾ ಕೆಟ್ಟ ಅನುಭವ",complaint,kn
+"ಗ್ರಾಹಕ ಸೇವೆ ಸರಿಯಾಗಿಲ್ಲ",complaint,kn
+"I want to return these shoes",return_exchange,en
+"The size is wrong, can I exchange it?",return_exchange,en
+"The item arrived damaged, please replace it",return_exchange,en
+"I want to return this broken wireless earbuds",return_exchange,en
+"The color does not match, replace this item",return_exchange,en
+"How can I return an item after delivery?",return_exchange,en
+"ee shoes return madi exchange kodi",return_exchange,kn-latn
+"size sari illa badalisi",return_exchange,kn-latn
+"item replace madi",return_exchange,kn-latn
+"ವಸ್ತು ಹಾಳಾಗಿದೆ ಬದಲಾಯಿಸಿ ಕೊಡಿ",return_exchange,kn
+"ಸೈಜ್ ಸರಿಯಾಗಿಲ್ಲ ಎಕ್ಸ್ಚೇಂಜ್ ಮಾಡಿ",return_exchange,kn
+"ನಾನು ಇದನ್ನು ರಿಟರ್ನ್ ಮಾಡಬೇಕು",return_exchange,kn
+"My payment failed",payment_issue,en
+"Money was deducted but the order was not placed",payment_issue,en
+"I was charged twice for the same order",payment_issue,en
+"UPI transaction failed and amount deducted",payment_issue,en
+"Double charge on my credit card for order",payment_issue,en
+"Payment got debited but showing pending in app",payment_issue,en
+"payment aagilla but hana kat aagide",payment_issue,kn-latn
+"duddu cut aagide payment fail aagide",payment_issue,kn-latn
+"eradu sala duddu cut aagide",payment_issue,kn-latn
+"ಪೇಮೆಂಟ್ ಆಗಿಲ್ಲ ಆದರೆ ಹಣ ಕಟ್ ಆಗಿದೆ",payment_issue,kn
+"ಖಾತೆಯಿಂದ ಹಣ ಕಡಿತವಾಗಿದೆ ಆದರೆ ಆರ್ಡರ್ ಆಗಿಲ್ಲ",payment_issue,kn
+"ಎರಡು ಬಾರಿ ಹಣ ಕಟ್ ಆಗಿದೆ",payment_issue,kn
+"My delivery is very late",delivery_problem,en
+"The courier says delivered but I did not receive anything",delivery_problem,en
+"Package was left at the wrong address",delivery_problem,en
+"Delivery boy did not contact me and marked not reachable",delivery_problem,en
+"Expected delivery was yesterday but still not arrived",delivery_problem,en
+"Parcel has been delayed for 5 days",delivery_problem,en
+"delivery tumba late aagide",delivery_problem,kn-latn
+"parcel innu bandilla",delivery_problem,kn-latn
+"delivery boy call madilla",delivery_problem,kn-latn
+"ಡೆಲಿವರಿ ತುಂಬಾ ತಡವಾಗಿದೆ",delivery_problem,kn
+"ಪಾರ್ಸೆಲ್ ಇನ್ನೂ ತಲುಪಿಲ್ಲ",delivery_problem,kn
+"ತಪ್ಪು ವಿಳಾಸಕ್ಕೆ ಡೆಲಿವರಿ ಮಾಡಲಾಗಿದೆ",delivery_problem,kn
+"What are your working hours?",general_inquiry,en
+"How can I contact customer care?",general_inquiry,en
+"Do you have a store in Bengaluru?",general_inquiry,en
+"Where is your customer support office located?",general_inquiry,en
+"What is your toll free helpline number?",general_inquiry,en
+"Can I talk to human support agent?",general_inquiry,en
+"nimma customer care number enu",general_inquiry,kn-latn
+"working hours yavaga ide",general_inquiry,kn-latn
+"office address yelli ide",general_inquiry,kn-latn
+"ಗ್ರಾಹಕ ಸಹಾಯವಾಣಿ ಸಂಖ್ಯೆ ಏನು",general_inquiry,kn
+"ಕೆಲಸದ ಸಮಯ ಯಾವಾಗ",general_inquiry,kn
+"ನಿಮ್ಮ ಕಚೇರಿ ಎಲ್ಲಿದೆ",general_inquiry,kn
+"What is the weather like today?",out_of_scope,en
+"Tell me a joke",out_of_scope,en
+"Who won the cricket match yesterday?",out_of_scope,en
+"Can you book me a flight to Delhi?",out_of_scope,en
+"Write a poem about the sunrise",out_of_scope,en
+"What is the capital of France?",out_of_scope,en
+"ivalu cricket match yar gedru",out_of_scope,kn-latn
+"ondu joke heli",out_of_scope,kn-latn
+"hawaamaana hegidhe",out_of_scope,kn-latn
+"ಇವತ್ತಿನ ಹವಾಮಾನ ಹೇಗಿದೆ",out_of_scope,kn
+"ಒಂದು ಜೋಕ್ ಹೇಳಿ",out_of_scope,kn
+"ಕ್ರಿಕೆಟ್ ಸ್ಕೋರ್ ಏನು",out_of_scope,kn

@@ -1,0 +1,52 @@
+{
+  "order_tracking": {
+    "display": "Order Tracking",
+    "team": "Order Support",
+    "required_entities": ["order_id"]
+  },
+  "order_cancellation": {
+    "display": "Order Cancellation",
+    "team": "Order Support",
+    "required_entities": ["order_id"]
+  },
+  "refund_request": {
+    "display": "Refund Request",
+    "team": "Refunds & Billing",
+    "required_entities": ["order_id"]
+  },
+  "product_information": {
+    "display": "Product Information",
+    "team": "Sales & Product Help",
+    "required_entities": []
+  },
+  "complaint": {
+    "display": "Complaint",
+    "team": "Customer Care (Senior)",
+    "required_entities": []
+  },
+  "return_exchange": {
+    "display": "Return / Exchange",
+    "team": "Returns Desk",
+    "required_entities": ["order_id"]
+  },
+  "payment_issue": {
+    "display": "Payment Issue",
+    "team": "Payments & Billing",
+    "required_entities": []
+  },
+  "delivery_problem": {
+    "display": "Delivery Problem",
+    "team": "Logistics Support",
+    "required_entities": ["order_id"]
+  },
+  "general_inquiry": {
+    "display": "General Inquiry",
+    "team": "General Help Desk",
+    "required_entities": []
+  },
+  "out_of_scope": {
+    "display": "Unsupported",
+    "team": null,
+    "required_entities": []
+  }
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligent Customer Intent Detector | SmartIntent AI</title>
+  <meta name="description" content="AI-driven customer intent detection, entity extraction, confidence scoring, ambiguity handling, and human-in-the-loop review.">
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Vendored Chart.js for 100% offline hackathon presentation capability -->
+  <script src="/static/vendor/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="container header-container">
+      <div class="brand">
+        <a href="#home" class="brand-link" id="brand-link">
+          <span class="brand-logo">⚡</span>
+          <span class="brand-title">SmartIntent <span class="accent-text">AI</span></span>
+        </a>
+        <span class="badge badge-pill badge-primary">CBC 2.0 • PS-030</span>
+      </div>
+
+      <nav class="nav-links" id="main-nav">
+        <a href="#home" class="nav-item active" id="nav-home">Home</a>
+        <a href="#analyze" class="nav-item" id="nav-analyze">Analyze Intent</a>
+        <a href="#review" class="nav-item" id="nav-review">
+          Review Queue <span class="badge badge-counter" id="nav-review-badge">0</span>
+        </a>
+        <a href="#dashboard" class="nav-item" id="nav-dashboard">Analytics</a>
+      </nav>
+
+      <div class="header-status">
+        <span class="status-indicator-dot" id="system-status-dot"></span>
+        <span class="status-indicator-text" id="system-status-text">Model Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Global Alert Banner -->
+  <div class="container banner-container" id="banner-container" style="display: none;">
+    <div class="alert-banner" id="alert-banner">
+      <span class="banner-icon" id="banner-icon">⚠️</span>
+      <span class="banner-message" id="banner-message"></span>
+      <button class="banner-close" id="banner-close" aria-label="Dismiss banner">&times;</button>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <!-- VIEW 1: HOME SECTION -->
+    <section id="view-home" class="view-section">
+      <div class="container hero-container">
+        <div class="hero-badge">Multi-Lingual • Context-Aware • Privacy-First</div>
+        <h1 class="hero-title">Catch the Intent. <span class="gradient-text">Clarify the Need.</span> Trigger the Action.</h1>
+        <p class="hero-description">
+          Triage raw customer support messages in English, Kannada script, and Romanized Kanglish.
+          Extract critical entities, detect multiple intents, guard personal privacy with automated PII masking,
+          and ask targeted questions when ambiguous.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#analyze" class="btn btn-primary btn-lg" id="btn-hero-launch">Launch Intent Detector</a>
+          <a href="#dashboard" class="btn btn-secondary btn-lg" id="btn-hero-dashboard">View Analytics</a>
+        </div>
+
+        <!-- 3-Step Flow Architecture -->
+        <div class="workflow-grid">
+          <div class="workflow-card">
+            <div class="card-step">01</div>
+            <h3>Input & Guard</h3>
+            <p>Raw text is normalized and scanned for PII (cards, phone, email, UPI). Sensitive details are masked; Order IDs are preserved.</p>
+          </div>
+          <div class="workflow-card">
+            <div class="card-step">02</div>
+            <h3>Classify & Extract</h3>
+            <p>TF-IDF and character n-grams score 10 intent classes. Clause splitting isolates multiple requests; regex extracts amounts, dates & products.</p>
+          </div>
+          <div class="workflow-card">
+            <div class="card-step">03</div>
+            <h3>Clarify or Route</h3>
+            <p>Uncertain predictions trigger targeted clarifying questions; confident intents route directly to specialist teams with priority tags.</p>
+          </div>
+        </div>
+
+        <!-- Feature Pillars -->
+        <h2 class="section-title">Core Engine Capabilities</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h4>Intelligent Classification</h4>
+            <p>N-gram ML pipeline trained on real conversational phrasings; predicts probabilities across 10 business intents.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h4>Context-Aware NER</h4>
+            <p>Extracts order numbers, amounts in INR/USD, relative dates, and catalog items from product gazetteers.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h4>Multilingual & Kanglish</h4>
+            <p>Tolerates script mixing, Kannada script (ಕನ್ನಡ), and colloquial Romanized Kannada without external translation APIs.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔀</div>
+            <h4>Multi-Intent Clause Splitter</h4>
+            <p>Handles combined requests such as "cancel my order and refund the money" into discrete routed clauses.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h4>Automated PII Masking</h4>
+            <p>Luhn-validated credit cards, phone numbers, UPI IDs, and emails masked into [TOKEN] tags before database storage.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h4>Human Feedback Loop</h4>
+            <p>Low-confidence messages are queued for human review. Reviewer corrections feed into batch retraining runs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: ANALYZE SECTION -->
+    <section id="view-analyze" class="view-section" style="display: none;">
+      <div class="container">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Customer Message Analysis</h1>
+            <p class="view-subtitle">Enter a customer query or choose from benchmark test cases.</p>
+          </div>
+          <div class="model-badge-wrapper">
+            <span class="badge badge-info" id="model-mode-badge">Model: Trained (scikit-learn)</span>
+          </div>
+        </div>
+
+        <!-- Quick Sample Message Chips -->
+        <div class="sample-chips-card card">
+          <span class="sample-label">⚡ Benchmark Sample Messages:</span>
+          <div class="chips-list" id="sample-chips">
+            <button type="button" class="chip-btn" data-msg="Where is my order #48213? It was supposed to arrive yesterday.">M1: Order Tracking</button>
+            <button type="button" class="chip-btn" data-msg="I want to cancel order ORD-77120, I ordered it by mistake.">M2: Cancellation</button>
+            <button type="button" class="chip-btn" data-msg="My payment failed but Rs. 2,499 was deducted. Please refund it urgently.">M3: Payment + Refund (Multi)</button>
+            <button type="button" class="chip-btn" data-msg="The wireless earbuds I got yesterday have a broken left speaker and I want to exchange them.">M4: Exchange Defect</button>
+            <button type="button" class="chip-btn" data-msg="Does the Galaxy M14 come in blue and does it support fast charging?">M5: Product Info</button>
+            <button type="button" class="chip-btn" data-msg="I was charged but I can't see my order.">M6: Ambiguous Query</button>
+            <button type="button" class="chip-btn" data-msg="It's not working.">M8: Vague / Low Conf</button>
+            <button type="button" class="chip-btn" data-msg="What's the weather like in Bengaluru today?">M9: Out of Scope</button>
+            <button type="button" class="chip-btn" data-msg="ನನ್ನ ಆರ್ಡರ್ ಎಲ್ಲಿದೆ? ಇನ್ನೂ ಬಂದಿಲ್ಲ">M10: Kannada Script</button>
+            <button type="button" class="chip-btn" data-msg="Nanna order cancel madi, hana refund beku">M11: Romanized Kanglish</button>
+            <button type="button" class="chip-btn" data-msg="My card 4111 1111 1111 1111 was charged twice, call me on 9876543210 or mail asha@example.com">M13: Sensitive PII</button>
+          </div>
+        </div>
+
+        <!-- Two Column Layout (Input on Left, Results on Right) -->
+        <div class="grid-2">
+          <!-- Input Card -->
+          <div class="card input-card">
+            <h2 class="card-title">Message Input</h2>
+            <form id="analyze-form">
+              <div class="form-group">
+                <label for="message-input" class="form-label">Customer Query Text:</label>
+                <textarea
+                  id="message-input"
+                  name="message"
+                  rows="6"
+                  class="form-control"
+                  placeholder="e.g. My payment failed but Rs. 2,499 was deducted. Please refund it urgently..."
+                  maxlength="1000"
+                  required
+                ></textarea>
+                <div class="char-count-row">
+                  <span class="form-hint" id="field-error-hint"></span>
+                  <span class="char-counter" id="char-counter">0 / 1000</span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="btn-clear-input">Clear</button>
+                <button type="submit" class="btn btn-primary" id="btn-analyze">
+                  <span class="spinner" id="analyze-spinner" style="display: none;"></span>
+                  <span id="analyze-btn-text">Analyze Intent</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results Card -->
+          <div class="card results-card" id="results-container">
+            <div class="empty-results" id="empty-results-placeholder">
+              <div class="empty-icon">📨</div>
+              <h3>No Analysis Yet</h3>
+              <p>Type a customer message or click one of the benchmark samples above, then press <strong>Analyze Intent</strong>.</p>
+            </div>
+
+            <!-- Dynamic Results Card (Filled via JavaScript) -->
+            <div id="result-card-content" style="display: none;">
+              <div class="result-header">
+                <div class="badges-row">
+                  <span class="badge" id="res-status-badge">Confident</span>
+                  <span class="badge badge-outline" id="res-lang-badge">en</span>
+                  <span class="badge badge-urgent" id="res-urgency-badge" style="display: none;">High Urgency</span>
+                </div>
+                <span class="prediction-id-tag" id="res-id-tag">ID: --</span>
+              </div>
+
+              <!-- Primary Intent & Score -->
+              <div class="intent-score-section">
+                <div class="intent-title-row">
+                  <h3 class="intent-main-title" id="res-intent-title">Order Tracking</h3>
+                  <span class="score-percent" id="res-score-percent">78%</span>
+                </div>
+                <div class="score-bar-container">
+                  <div class="score-bar-fill" id="res-score-bar" style="width: 78%;"></div>
+                </div>
+                <div class="score-meta">
+                  <span class="score-label">Model Score</span>
+                  <span class="score-info-note" title="A model output used for thresholds. Not a calibrated probability.">ℹ️ Score Threshold Note</span>
+                </div>
+              </div>
+
+              <!-- Multi-intent breakdown if present -->
+              <div class="multi-intents-block" id="res-multi-block" style="display: none;">
+                <h4>Detected Sub-Intent Clauses:</h4>
+                <div class="multi-intents-list" id="res-multi-list"></div>
+              </div>
+
+              <!-- Alternatives / Runner ups -->
+              <div class="alternatives-block" id="res-alternatives-block" style="display: none;">
+                <span class="alt-label">Secondary Intent:</span>
+                <span id="res-alternatives-text"></span>
+              </div>
+
+              <!-- Extracted Entities -->
+              <div class="entities-section">
+                <h4>Extracted Entities:</h4>
+                <div class="entity-chips-container" id="res-entities-container">
+                  <span class="empty-entity-hint">None detected</span>
+                </div>
+              </div>
+
+              <!-- Clarification Question Prompts -->
+              <div class="clarification-box" id="res-clarification-box" style="display: none;">
+                <div class="clarification-header">
+                  <span class="clarify-icon">❓</span>
+                  <strong>Clarification Needed:</strong>
+                </div>
+                <p class="clarification-text" id="res-clarification-text"></p>
+              </div>
+
+              <!-- Routing Decision -->
+              <div class="routing-box">
+                <div class="routing-row">
+                  <span class="route-label">Destination Team:</span>
+                  <span class="route-target" id="res-routing-target">Order Support</span>
+                </div>
+                <div class="routing-row">
+                  <span class="route-label">Triage Priority:</span>
+                  <span class="route-priority" id="res-routing-priority">Normal</span>
+                </div>
+              </div>
+
+              <!-- Privacy Masked Message -->
+              <div class="privacy-section">
+                <div class="privacy-header">
+                  <span>Masked Message (Stored in DB):</span>
+                  <span class="pii-counts-badge" id="res-pii-counts">0 PII masked</span>
+                </div>
+                <pre class="masked-text-pre" id="res-masked-text"></pre>
+              </div>
+
+              <!-- Human Review Action Bar -->
+              <div class="review-action-card">
+                <span class="review-prompt">Human Feedback:</span>
+                <div class="review-actions-group">
+                  <button type="button" class="btn btn-sm btn-success" id="btn-confirm-prediction">Confirm ✓</button>
+                  <div class="correct-group">
+                    <select id="correct-intent-select" class="form-select form-select-sm" aria-label="Select correct intent">
+                      <option value="">Select Correction...</option>
+                    </select>
+                    <button type="button" class="btn btn-sm btn-outline" id="btn-submit-correction">Correct</button>
+                  </div>
+                </div>
+                <span class="feedback-status-msg" id="feedback-status-msg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: REVIEW QUEUE SECTION -->
+    <section id="view-review" class="view-section" style="display: none;">
+      <div class="container">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Human-in-the-Loop Review Queue</h1>
+            <p class="view-subtitle">Triage low-confidence, ambiguous, or multi-intent predictions flagged by the system.</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-refresh-queue">🔄 Refresh Queue</button>
+        </div>
+
+        <div class="review-list-container" id="review-queue-list">
+          <!-- Populated dynamically via JS -->
+          <div class="empty-queue-card card" id="empty-queue-msg">
+            <span class="empty-icon">✅</span>
+            <h3>Review Queue Is Clear</h3>
+            <p>No predictions currently require human review. Try analyzing an ambiguous query like <em>"It's not working."</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: ANALYTICS DASHBOARD SECTION -->
+    <section id="view-dashboard" class="view-section" style="display: none;">
+      <div class="container">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Operations & Analytics Dashboard</h1>
+            <p class="view-subtitle">Live volume, intent distributions, reviewer agreement, and triage history.</p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-refresh-dashboard">🔄 Refresh Stats</button>
+        </div>
+
+        <!-- 4 KPI Summary Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card card">
+            <span class="kpi-label">Total Messages</span>
+            <span class="kpi-value" id="kpi-total">0</span>
+            <span class="kpi-sub">Lifetime Processed</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">Pending Review</span>
+            <span class="kpi-value warning-val" id="kpi-pending">0</span>
+            <span class="kpi-sub">Awaiting Human Triage</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">High Urgency</span>
+            <span class="kpi-value urgent-val" id="kpi-urgent">0</span>
+            <span class="kpi-sub">Priority Fast-Track</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">Reviewer Agreement</span>
+            <span class="kpi-value success-val" id="kpi-agreement">--</span>
+            <span class="kpi-sub">Confirmed / Reviewed</span>
+          </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+          <div class="chart-card card">
+            <h3 class="chart-title">Intent Distribution</h3>
+            <div class="chart-wrapper">
+              <canvas id="intentChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card card">
+            <h3 class="chart-title">Status Breakdown</h3>
+            <div class="chart-wrapper">
+              <canvas id="statusChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card card">
+            <h3 class="chart-title">Language Modality Mix</h3>
+            <div class="chart-wrapper">
+              <canvas id="langChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Table Card -->
+        <div class="card history-card">
+          <div class="history-header">
+            <h3>Recent Analysis Log (Last 50 Messages)</h3>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="history-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Timestamp</th>
+                  <th>Masked Query</th>
+                  <th>Predicted Intent</th>
+                  <th>Score</th>
+                  <th>Status</th>
+                  <th>Review</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <tr><td colspan="7" class="text-center">Loading history...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <strong>The Alpha Coders</strong> (Team ID: CBC089) • Problem ID: PS-030
+      </div>
+      <div class="footer-right">
+        <span>CBC 2.0 Hackathon • Design Round</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

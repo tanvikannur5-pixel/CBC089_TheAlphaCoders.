@@ -1,0 +1,7 @@
+{
+  "trained_at": "2026-10-10T12:06:42.646518+00:00",
+  "n_examples": 120,
+  "holdout_macro_f1": 0.636,
+  "cv_macro_f1": 0.581,
+  "note": "Trained on hackathon seed dataset."
+}

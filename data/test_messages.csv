@@ -1,0 +1,31 @@
+text,intent,language
+"Where is my package right now?",order_tracking,en
+"nanna order yelli ide check madi",order_tracking,kn-latn
+"ನನ್ನ ಪಾರ್ಸೆಲ್ ಎಲ್ಲಿದೆ",order_tracking,kn
+"Cancel order ORD-77120 immediately",order_cancellation,en
+"order cancel madi please",order_cancellation,kn-latn
+"ಈ ಆರ್ಡರ್ ರದ್ದು ಮಾಡಿ",order_cancellation,kn
+"I need a refund for my return",refund_request,en
+"nange duddu vapas kodi",refund_request,kn-latn
+"ನನ್ನ ಹಣ ರಿಫಂಡ್ ಮಾಡಿ",refund_request,kn
+"Does this Galaxy M14 come in blue color?",product_information,en
+"ee laptop RAM eshtu",product_information,kn-latn
+"ಫೋನ್ ಬೆಲೆ ಎಷ್ಟು",product_information,kn
+"I am very unhappy with your poor service",complaint,en
+"tumba bejar aagide service nodi",complaint,kn-latn
+"ನಿಮ್ಮ ಸೇವೆ ಕೆಟ್ಟದಾಗಿದೆ",complaint,kn
+"I received wrong size shoes and want to exchange",return_exchange,en
+"size sari illa exchange kodi",return_exchange,kn-latn
+"ವಸ್ತು ಬದಲಾಯಿಸಿ",return_exchange,kn
+"Amount was deducted twice from bank",payment_issue,en
+"duddu cut aagide order aagilla",payment_issue,kn-latn
+"ಹಣ ಕಡಿತವಾಗಿದೆ",payment_issue,kn
+"Delivery is delayed by one week",delivery_problem,en
+"delivery innu bandilla tumba late",delivery_problem,kn-latn
+"ಡೆಲಿವರಿ ತುಂಬಾ ತಡವಾಗಿದೆ",delivery_problem,kn
+"How do I reach your helpdesk?",general_inquiry,en
+"customer support phone number kodi",general_inquiry,kn-latn
+"ಸಹಾಯವಾಣಿ ಸಂಖ್ಯೆ ಕೊಡಿ",general_inquiry,kn
+"What is the population of Tokyo?",out_of_scope,en
+"cinema release yavaga",out_of_scope,kn-latn
+"ಮಳೆ ಬರುತ್ತದೆಯೇ",out_of_scope,kn
